@@ -1,0 +1,130 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="content" style="text-align:center">
+  
+  <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Register</h1>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <table>
+   <tr>
+   <td>Fullname<br><input type="text" id="name" name="name" class="form-control"
+    required minlength="4" 
+    [(ngModel)]="data.fullname" #name="ngModel"> 
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger"> 
+    <div *ngIf="name.errors.required">
+      Name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+  </div></td>
+
+  <td>Date of Birth<br><input type="text" name="dob" class="form-control" required [(ngModel)]="data.date" #dob="ngModel"
+    pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}">
+  <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"
+  class="alert alert-danger">
+  <div *ngIf="dob.errors.required">
+    Date of Birth is required.
+  </div>
+  <div *ngIf="dob.errors.pattern">
+    dd/mm/yyyy is the format.
+   </div></div>
+  </td>
+   </tr>
+ 
+ <tr>
+   <td>Email Address<br><input type="email" id="mail" type="email" name="mail" class="form-control"
+    required minlength="10" [(ngModel)]="data.mailid" #mail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    <div  *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+    class="alert alert-danger">
+   <div *ngIf="mail.errors.required">
+    Mail is required.
+  </div>
+   <div *ngIf="mail.errors.pattern">
+     Invalid Mail.
+  </div>
+   <div *ngIf="mail.errors.minlength">
+    Mail must be at least 10 characters long.
+  </div>
+</div>
+</td>
+   
+<td>Phone Number<br><input type="number" id="phnum" type="number" name="phnum" class="form-control"
+    required  [(ngModel)]="data.phnumber" #phnum="ngModel" pattern="[0-9]{10}">
+    <div  *ngIf="phnum.invalid && (phnum.dirty || phnum.touched)"
+    class="alert alert-danger">
+  <div *ngIf="phnum.errors.required">
+      Phone Number is required.
+    </div>
+    <div *ngIf="phnum.errors.pattern ">
+        Invalid Phone Number.
+      </div>
+    </div>
+    </td>
+ </tr>
+ 
+ 
+ <tr>
+   <td>Password<br><input type="password" id="password" type="password" name="password" 
+    required minlength="10" [(ngModel)]="data.pwrd" #password="ngModel">
+    <div  *ngIf="password.invalid && (password.dirty || password.touched)"
+    class="alert alert-danger">
+ <div *ngIf="password.errors.required">
+    Password is required.
+  </div>
+  <div *ngIf="password.errors.minlength">
+   Password must be at least 10 characters long.
+ </div>
+ </div>
+ </td>
+   
+ <td>Tell us about yourself<br><textarea rows="3" cols="15" id="about" name="about" 
+    required [(ngModel)]="data.aboutu" #about="ngModel"></textarea>
+    <div  *ngIf="about.invalid && (about.dirty || about.touched)"
+    class="alert alert-danger">
+   <div *ngIf="about.errors.required">
+      Describe yourself.
+    </div>
+    </div>
+  </td>
+ </tr>
+
+ <tr>
+   <td><select name="cities"  required [(ngModel)]="data.city" #cities="ngModel">
+     <option value="Telangana">Telangana</option>
+    <option value="Visakhapatnam">Visakhapatnam</option>
+    <option value="Banglore">Banglore</option>
+  </select></td>
+
+   <td><input type="radio" name="gender" value="male" 
+     required [(ngModel)]="data.gen" #gender="ngModel" > Male
+    <input type="radio" name="gender" value="female"
+    required [(ngModel)]="gen" #gender="ngModel"> Female<br>
+    <div  *ngIf="gender.invalid && (gender.dirty || gender.touched)"
+    class="alert alert-danger">
+   <div *ngIf="gender.errors.required">
+      Gender is required.
+    </div>
+    </div>
+  </td>
+ </tr><br>
+
+
+ <tr>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="checkbox" name="check" value="I want to receive email about updates to website"
+   required [(ngModel)]="data.box" #check="ngModel" > I want to receive email about updates to website
+   <div  *ngIf="check.invalid && (check.dirty || check.touched)"
+    class="alert alert-danger">
+   <div *ngIf="check.errors.required">
+      checkbox is required.
+    </div>
+    </div>
+  </tr><br></table>
+ 
+   
+  <button type="submit"   class="button" [disabled]="f.form.pristine || f.form.invalid">Register</button>
+ 
+
+  </form>
+    </div>
+ 
